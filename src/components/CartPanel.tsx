@@ -2,6 +2,7 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../store/store';
 import { addToCart, removeFromCart, deleteFromCart } from '../store/cartSlice';
+import { Trash2 } from 'lucide-react';
 
 interface CartPanelProps {
   onClose: () => void;
@@ -39,20 +40,20 @@ const CartPanel: React.FC<CartPanelProps> = ({ onClose }) => {
                       onClick={() => dispatch(removeFromCart(item.id))}
                       className="p-2 hover:bg-gray-100 rounded-full transition-colors"
                     >
-                      减少
+                      -
                     </button>
                     <span className="w-8 text-center font-medium">{item.quantity}</span>
                     <button
                       onClick={() => dispatch(addToCart(item))}
                       className="p-2 hover:bg-gray-100 rounded-full transition-colors"
                     >
-                      增加
+                      +
                     </button>
                     <button
                       onClick={() => dispatch(deleteFromCart(item.id))}
-                      className="p-2 hover:bg-gray-100 rounded-full transition-colors ml-2"
+                      className="p-2 hover:bg-gray-100 rounded-full transition-colors ml-2 text-red-500 hover:text-red-600"
                     >
-                      删除
+                      <Trash2 className="h-4 w-4" />
                     </button>
                   </div>
                 </div>
