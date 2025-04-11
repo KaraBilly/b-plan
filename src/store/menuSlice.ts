@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { MenuItem } from '../types';
 
 interface MenuState {
@@ -41,7 +41,13 @@ const initialState: MenuState = {
 const menuSlice = createSlice({
   name: 'menu',
   initialState,
-  reducers: {},
+  reducers: {
+    addMenuItem: (state, action: PayloadAction<MenuItem>) => {
+      state.items.push(action.payload);
+    },
+  },
 });
+
+export const { addMenuItem } = menuSlice.actions;
 
 export default menuSlice.reducer;

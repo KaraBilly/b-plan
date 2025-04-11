@@ -13,19 +13,22 @@ const CartPanel: React.FC<CartPanelProps> = ({ onClose }) => {
   const dispatch = useDispatch();
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-25 backdrop-blur-sm z-40 transition-opacity duration-300">
-      <div className="fixed bottom-0 left-0 right-0 bg-white rounded-t-3xl shadow-[0_-8px_30px_rgba(0,0,0,0.12)] transform transition-transform duration-300 ease-out z-50">
+    <div className="fixed inset-0 bg-black bg-opacity-25 backdrop-blur-sm z-50">
+      <div className="fixed bottom-20 left-0 right-0 max-h-[80vh] bg-white rounded-t-3xl shadow-[0_-8px_30px_rgba(0,0,0,0.12)] z-50">
         <div className="p-6">
           <div className="flex justify-between items-center mb-6">
             <h3 className="text-xl font-semibold text-gray-800">购物车</h3>
-            <button onClick={onClose} className="p-2 hover:bg-gray-100 rounded-full transition-colors">
+            <button 
+              onClick={onClose} 
+              className="p-2 hover:bg-gray-100 rounded-full transition-colors"
+            >
               关闭
             </button>
           </div>
           {cart.length === 0 ? (
             <p className="text-center text-gray-500 py-8">购物车是空的</p>
           ) : (
-            <div className="space-y-6 max-h-[60vh] overflow-y-auto">
+            <div className="space-y-6 max-h-[calc(70vh-6rem)] overflow-y-auto">
               {cart.map(item => (
                 <div key={item.id} className="flex items-center justify-between py-3 border-b border-gray-100">
                   <div className="flex items-center space-x-4">
